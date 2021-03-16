@@ -1,7 +1,7 @@
 export class Cliente {
-  id:number;
+  id: number;
   nombre: String;
   apellido: String;
-  creataAt: String;
+  createAt: String;
   email: String;
 }
