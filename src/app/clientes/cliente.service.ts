@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from './cliente';
 import { CLIENTES} from './clientes.json';
-import { of, Observable, throwError } from 'rxjs';
+import { of, Observable, throwError, pipe } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -27,7 +27,13 @@ export class ClienteService {
   }
 
   create(cliente: Cliente) : Observable<Cliente>{
-    return this.http.post<Cliente>(this.urlEndPoint, cliente, {headers: this.httpHeaders})
+    return this.http.post<Cliente>(this.urlEndPoint, cliente, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    )
   }
 
   getCliente(id): Observable<Cliente>{
@@ -42,10 +48,22 @@ export class ClienteService {
   }
 
   update(cliente: Cliente) : Observable<Cliente>{
-    return this.http.put<Cliente>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers: this.httpHeaders})
+    return this.http.put<Cliente>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error,'error');
+        return throwError(e);
+      })
+    )
   }
 
   delete(id:number): Observable<Cliente>{
-    return this.http.delete<Cliente>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders})
+    return this.http.delete<Cliente>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    )
   }
 }
