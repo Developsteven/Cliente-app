@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from './cliente';
-import { CLIENTES} from './clientes.json';
 import { of, Observable, throwError, pipe } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
@@ -97,5 +96,21 @@ export class ClienteService {
         return throwError(e);
       })
     )
+  }
+
+  subirFoto(archivo: File, id): Observable<Cliente>{
+
+    let formData = new FormData();
+    formData.append("archivo", archivo);
+    formData.append("id", id);
+
+    return this.http.post(`${this.urlEndPoint}/upload/`, formData).pipe(
+      map( (response: any) => response.cliente as Cliente),
+      catchError(e => {
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    );
   }
 }
