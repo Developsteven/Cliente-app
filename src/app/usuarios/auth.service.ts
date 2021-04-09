@@ -18,13 +18,14 @@ export class AuthService {
 
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic' + credenciales
+      'Authorization': 'Basic ' + credenciales
     });
 
     let params = new URLSearchParams();
     params.set('grant_type', 'password');
     params.set('username', usuario.username);
     params.set('password', usuario.password);
-    return this.http.post(urlEndpoint, params, {headers: httpHeaders});
+    console.log(params.toString());
+    return this.http.post<any>(urlEndpoint, params.toString(), {headers: httpHeaders});
   }
 }
