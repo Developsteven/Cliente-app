@@ -80,6 +80,14 @@ export class AuthService {
     if(payload != null && payload.user_name && payload.user_name.length>0){
       return true;
     }
+    return false;
+  }
+
+  hasRole(role:string): boolean{
+    if(this.usuario.roles.includes(role)){
+      return true;
+    }
+    return false;
   }
 
   logout():void{
