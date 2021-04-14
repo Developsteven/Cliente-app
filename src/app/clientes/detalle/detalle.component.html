@@ -55,6 +55,7 @@
                     <th>descripcion</th>
                     <th>fecha</th>
                     <th>total</th>
+                    <th>detalle</th>
                   </tr>
                 </thead>
 
@@ -64,12 +65,13 @@
                     <td>{{factura.descripcion}}</td>
                     <td>{{factura.creatAt}}</td>
                     <td>{{factura.total}}</td>
+                    <td><button class="btn btn-primary btn-sm" type="button" [routerLink]="['/facturas', factura.id]">Ver</button></td>
                   </tr>
                 </tbody>
 
               </table>
             </div>
-            
+
           </div>
         </div>
         <div class="modal-footer">
