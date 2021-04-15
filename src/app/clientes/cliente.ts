@@ -10,5 +10,5 @@ export class Cliente {
   foto: String;
 
   region: Region;
-  factura: Factura[] = [];
+  facturas: Factura[] = [];
 }
