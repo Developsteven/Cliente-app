@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Factura } from './models/factura';
-import { FacturasService } from './services/factura.service';
+import { FacturaService} from './services/factura.service';
 
 @Component({
   selector: 'app-detalle-factura',
@@ -12,7 +12,7 @@ export class DetalleFacturaComponent implements OnInit {
   factura: Factura;
   titulo: string ='Factura';
 
-  constructor(private FacturasService: FacturasService, 
+  constructor(private FacturasService: FacturaService, 
     private activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {

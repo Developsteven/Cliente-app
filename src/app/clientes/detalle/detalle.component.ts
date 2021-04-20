@@ -1,7 +1,7 @@
 import { HttpEventType } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Factura } from 'src/app/facturas/models/factura';
-import { FacturasService } from 'src/app/facturas/services/factura.service';
+import { FacturaService } from 'src/app/facturas/services/factura.service';
 import { AuthService } from 'src/app/usuarios/auth.service';
 import Swal from 'sweetalert2';
 import { Cliente } from '../cliente';
@@ -22,7 +22,7 @@ export class DetalleComponent implements OnInit {
 
   constructor(
     private clienteService: ClienteService,
-    private facturaService: FacturasService,
+    private facturaService: FacturaService,
     private authService: AuthService,
     public modalService: ModalService
   ) { }
