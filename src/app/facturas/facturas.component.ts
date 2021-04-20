@@ -45,4 +45,8 @@ export class FacturasComponent implements OnInit {
 
     return this.facturaService.filtrarProductos(filterValue);
   }
+
+  mostrarNombre(producto?: Producto):string | undefined {
+    return producto? producto.nombre: undefined;
+  }
 }
