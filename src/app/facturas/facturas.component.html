@@ -51,6 +51,7 @@
             <th>Precio</th>
             <th>Cantidad</th>
             <th>Total</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -59,6 +60,7 @@
             <td>{{item.producto.precio}}</td>
             <td><input type="number" value="{{item.cantidad}}" class="form-control col-sm-4" (change)="actualizarCantidad(item.producto.id, $event)"></td>
             <td>{{item.calcularImporte()}}</td>
+            <td><button type="button" class="btn btn-danger btn-sm" (click)="eliminarItemFactura(item.producto.id)">X</button></td>
           </tr>
         </tbody>
       </table>
