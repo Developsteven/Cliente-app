@@ -90,7 +90,7 @@ export class FacturasComponent implements OnInit {
       if(id === iteam.producto.id){
         existe = true;
       }
-    })
+    });
     return existe;
   }
 
